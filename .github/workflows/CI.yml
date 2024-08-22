@@ -30,12 +30,6 @@ jobs:
           path: cypress/videos
           if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
 
-      - name: merge reports
-        run: npm run report:merge
-
-      - name: Generate HTML report
-        run: npm run report:generate
-
       # Integrate html reports
       - name: upload artifacts-reports
         uses: actions/upload-artifact@v3
