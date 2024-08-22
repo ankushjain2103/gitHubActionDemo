@@ -10,18 +10,41 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
-        # after the test run completes store videos and any screenshots
-      - uses: actions/upload-artifact@v4
 
+        # after the test run completes store videos and any screenshots
+
+      - name: upload artifacts-screenshot 
+        uses: actions/upload-artifact@v4
         # add the line below to store screenshots only on failures
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
           if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
-      - uses: actions/upload-artifact@v4
+
+      - name: upload artifacts-video 
+        uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-videos
           path: cypress/videos
           if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
+
+      # Integrate html reports
+      - name: upload artifacts-reports
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: cypress-execution-report
+          path: cypress/reports/html
+          retention-days: 30
+
+      # Integrate slack notifications
+      - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_USERNAME: ci-demo
+        SLACK_TITLE: Slack notification
+        SLACK_MESSAGE: 'Message'
+        SLACK_COLOR: ${{ job.status }}
