@@ -9,6 +9,10 @@ jobs:
 
       # Install npm dependencies, cache them correctly
       # and run all Cypress tests
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Cypress run
         run: npm run scripts-execution-prod
 
