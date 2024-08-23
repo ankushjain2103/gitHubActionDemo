@@ -13,17 +13,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Cache Cypress binary
-        uses: actions/cache@v2  # Correct indentation
-        with:
-          path: |
-            ~/.cache/Cypress
-          key: ${{ runner.os }}-cypress-${{ hashFiles('**/cypress.json') }}
-          restore-keys: |
-            ${{ runner.os }}-cypress-
-
       - name: Cypress run
-        run: npm run scripts-execution-prod
+        uses: cypress-io/github-action@v6
 
       # after the test run completes store videos and any screenshots
       - name: upload artifacts-screenshot
