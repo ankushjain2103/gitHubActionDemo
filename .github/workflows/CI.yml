@@ -11,6 +11,8 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
+        with:
+        command: npm run scripts-execution-prod
 
       # after the test run completes store videos and any screenshots
       - name: upload artifacts-screenshot
@@ -29,6 +31,15 @@ jobs:
           name: cypress-videos
           path: cypress/videos
           if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
+
+      - name: Clear reports directory
+        run: npm run clean-reports
+
+      - name: merge reports
+        run: npm run report:merge
+
+      - name: Generate HTML report
+        run: npm run report:generate
 
       # Integrate html reports
       - name: upload artifacts-reports

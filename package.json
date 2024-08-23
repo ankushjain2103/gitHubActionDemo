@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean-reports": "rm -R -f cypress/reports/html",
+    "report:merge": "mochawesome-merge cypress/reports/html/*.json -o cypress/reports/html/report.json",
+    "report:generate": "marge cypress/reports/html/report.json --charts true",
+    "scripts-execution-prod": "npx cypress run --browser chrome --spec cypress/e2e/**.cy.js --headed "
   },
   "author": "",
   "license": "ISC",
