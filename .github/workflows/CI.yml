@@ -10,9 +10,7 @@ jobs:
       # Install npm dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with:
-        command: npm run scripts-execution-prod
+        run: npm run scripts-execution-prod
 
       # after the test run completes store videos and any screenshots
       - name: upload artifacts-screenshot
