@@ -5,7 +5,7 @@ module.exports = defineConfig({
 	reporterOptions: {
 		reporterEnabled: 'mochawesome',
 		mochawesomeReporterOptions: {
-			reportDir: 'cypress/results',
+			reportDir: 'cypress/reports/mocha',
 			reportFilename: '[name].html',
 			useInlineDiffs: true,
 			quite: true,
