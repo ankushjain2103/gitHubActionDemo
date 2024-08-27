@@ -13,6 +13,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Clear reports directory
+        if: success() || failure()
+        run: npm run clean-reports
+
       - name: Cypress run
         uses: cypress-io/github-action@v6
 
@@ -34,11 +38,6 @@ jobs:
           path: cypress/videos
           if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
 
-      - name: Clear reports directory
-        if: success() || failure()
-        run: npm run clean-reports
-        
-
       - name: merge reports
         if: success() || failure()
         run: npm run report:merge
@@ -53,7 +52,7 @@ jobs:
         if: always()
         with:
           name: cypress-execution-report
-          path: cypress/reports/html
+          path: gitHubActionDemo/mochawesome-report
           retention-days: 30
 
       # Integrate slack notifications

@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean-reports": "rm -R -f gitHubActionDemo/cypress/reports/html",
-    "report:merge": "mochawesome-merge gitHubActionDemo/cypress/reports/html/*.json -o gitHubActionDemo/cypress/reports/html/report.json",
-    "report:generate": "marge gitHubActionDemo/cypress/reports/html/report.json --charts true",
+    "clean-reports": "rm -R -f cypress/reports/mocha",
+    "report:merge": "mochawesome-merge cypress/reports/mocha/*.json -o cypress/reports/mocha/report.json",
+    "report:generate": "marge cypress/reports/mocha/report.json --charts true",
     "scripts-execution-prod": "cypress run --browser chrome --spec 'cypress/e2e/**.cy.js' --headed "
   },
   "author": "",
