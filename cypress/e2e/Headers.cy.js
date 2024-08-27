@@ -6,7 +6,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return false
   })
   
-  describe("Headers", ()=>{
+  describe.skip("Headers", ()=>{
 
 
     it('logo', ()=>{

@@ -26,7 +26,7 @@ jobs:
           path: cypress/screenshots
           if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
 
-      - name: upload artifacts-video 
+      - name: upload artifacts-video
         uses: actions/upload-artifact@v4
         if: failure()
         with:
@@ -35,12 +35,16 @@ jobs:
           if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
 
       - name: Clear reports directory
+        if: success() || failure()
         run: npm run clean-reports
+        
 
       - name: merge reports
+        if: success() || failure()
         run: npm run report:merge
 
       - name: Generate HTML report
+        if: success() || failure()
         run: npm run report:generate
 
       # Integrate html reports
