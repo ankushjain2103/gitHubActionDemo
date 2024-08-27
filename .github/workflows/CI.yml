@@ -52,7 +52,7 @@ jobs:
         if: always()
         with:
           name: cypress-execution-report
-          path: gitHubActionDemo/mochawesome-report
+          path: mochawesome-report
           retention-days: 30
 
       # Integrate slack notifications
