@@ -6,7 +6,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return false
   })
   
-  describe.skip("Headers-douche", ()=>{
+  describe("Headers-douche", ()=>{
 
     it('Douche', ()=>{
 

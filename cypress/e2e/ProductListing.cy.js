@@ -6,7 +6,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     return false
   })
   
-  describe.skip("Product Listing", ()=>{
+  describe("Product Listing", ()=>{
   
     it("Added Product from listing page", ()=>{
   
